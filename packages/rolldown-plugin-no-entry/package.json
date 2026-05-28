@@ -1,0 +1,23 @@
+{
+  "name": "rolldown-plugin-no-entry",
+  "version": "0.1.0",
+  "type": "module",
+  "funding": "https://github.com/sponsors/Jaid",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jaid/style-dts.git"
+  },
+  "main": "src/main.ts",
+  "exports": {
+    ".": {
+      "default": "./src/main.ts"
+    }
+  },
+  "scripts": {
+    "test": "bun test --max-concurrency 1 ./test"
+  },
+  "dependencies": {
+    "rolldown": "^1.0.3"
+  }
+}
