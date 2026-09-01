@@ -3,6 +3,7 @@ import type {OutputAsset, OutputBundle, Plugin} from 'rolldown'
 import path from 'node:path'
 
 import fs from 'fs-extra'
+import tinyhand from 'tinyhand'
 
 export type RolldownPluginCollectDtsOptions = {
   fileName?: string
@@ -69,9 +70,12 @@ const createMergedDeclarationContent = async (sourceFolder: string) => {
   return `${mergedContent}\n`
 }
 
-export default function rolldownPluginCollectDts({fileName = 'index.d.ts',
-  packageJsonFileName = false,
-  sourceFolder}: RolldownPluginCollectDtsOptions): Plugin {
+export default function rolldownPluginCollectDts(input: tinyhand.Wrap<'sourceFolder', RolldownPluginCollectDtsOptions>): Plugin {
+  const {
+    fileName = 'index.d.ts',
+    packageJsonFileName = false,
+    sourceFolder,
+  } = tinyhand('sourceFolder', input)
   const normalizedFileName = normalizePathForPackageJson(fileName)
   const normalizedPackageJsonFileName = packageJsonFileName && normalizePathForPackageJson(packageJsonFileName)
   const injectTypesFieldIntoPackageJsonAsset = (bundle: OutputBundle) => {

@@ -6,6 +6,9 @@ import {rolldown} from 'rolldown'
 import rolldownPluginCollectDts from '../src/main.ts'
 
 describe('rolldownPluginCollectDts', () => {
+  test('accepts sourceFolder shorthand', () => {
+    expect(rolldownPluginCollectDts('types').name).toBe('rolldown-plugin-collect-dts')
+  })
   test('merges declaration files and injects the types field into package.json', async () => {
     const fixtureFolder = path.join(import.meta.dirname, `fixture-${crypto.randomUUID()}`)
     const sourceFolder = path.join(fixtureFolder, 'src')

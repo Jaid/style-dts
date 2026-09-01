@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "fs-extra": "^11.3.2",
-    "rolldown": "^1.0.3"
+    "rolldown": "^1.0.3",
+    "tinyhand": "^0.1.0"
   }
 }
